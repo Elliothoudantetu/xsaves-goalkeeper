@@ -1,0 +1,8 @@
+# Données régénérables / Regenerable data
+*.rds
+*.RData
+.RData
+.RDataTmp
+.Rhistory
+.Rproj.user/
+.DS_Store
