@@ -4,13 +4,13 @@
 
 **La position du gardien au moment de la frappe change-t-elle ses chances d'arrêt, et dans quelles situations ?**
 
-Ce dépôt est un prototype exploratoire construit sur les données ouvertes de StatsBomb. Il ajuste un modèle d'*expected saves* (xSaves) qui, en plus des caractéristiques habituelles du tir, décrit la position du gardien par rapport au tir : sortie, écart à la bissectrice et part du but qu'il cache au tireur.
+Ce dépôt est un prototype exploratoire construit sur les données en libre accès de StatsBomb. Il ajuste un modèle d'*expected saves* (xSaves) qui, en plus des caractéristiques habituelles du tir, décrit la position du gardien par rapport au tir : sortie, écart à la bissectrice et part du but qu'il cache au tireur.
 
 ## Résultats clés
 
 - **La position du gardien apporte beaucoup d'information.** Ajouter les variables du gardien à un modèle « tir seul » fait passer l'AUC hors échantillon de **0,760 à 0,895** (score de Brier 0,168 → 0,116), en validation croisée à 5 blocs groupés par match.
 - **La couverture de l'angle ne compte que de près.** Sur les tirs à moins de 8 yards, les gardiens qui ont arrêté le ballon cachaient **60 %** du but au tireur, contre **41 %** quand ils ont encaissé (test de Wilcoxon, p < 10⁻⁵). Au-delà de 8 yards, aucune différence.
-- **L'effet tient après ajustement.** Dans la régression logistique, l'interaction couverture × tir proche est positive et significative (**β = 3,09, p = 0,005**), à distance, angle, tête, hauteur du tir, défenseurs dans le triangle de tir, écart à la bissectrice et point d'arrivée du ballon égaux. De près, cacher 10 points de pourcentage de but en plus multiplie la cote d'un arrêt par environ **1,28**.
+- **L'effet tient après ajustement.** Dans la régression logistique, l'interaction couverture et tir proche est positive et significative (**β = 3,09, p = 0,005**), à distance, angle, tête, hauteur du tir, défenseurs dans le triangle de tir, écart à la bissectrice et point d'arrivée du ballon égaux. De près, cacher de 10% de plus le but multiplie la probabilité d'un arrêt par environ **1,28**.
 
 C'est cohérent avec l'entraînement des gardiens : sur un face-à-face, il n'y a pas le temps de plonger, donc ce qui compte, c'est la part du but que le corps couvre déjà (fermer l'angle, sortie en croix, blocage). De plus loin, la réaction et le plongeon priment.
 
@@ -36,14 +36,14 @@ C'est cohérent avec l'entraînement des gardiens : sur un face-à-face, il n'y 
 
 ## Modèles
 
-Régressions logistiques comparées en validation croisée à 5 blocs groupés par match (un modèle n'est jamais évalué sur un match vu à l'entraînement).
+Régressions logistiques comparées en validation croisée à 5 blocs groupés par match (4 blocs d'entrainements et un bloc d'évaluation).
 
 | Modèle | AUC | Brier |
 |---|---|---|
 | Variables du tir seules | 0,760 | 0,168 |
 | + sortie du gardien, écart à la bissectrice, écart à l'arrivée | 0,895 | 0,116 |
 | + couverture du gardien (à la place de la sortie) | 0,892 | 0,118 |
-| + couverture × tir proche (< 8 yards) | 0,894 | 0,117 |
+| + couverture et tir proche (< 8 yards) | 0,894 | 0,117 |
 
 Le modèle avec interaction n'améliore pas la discrimination globale, car les tirs proches représentent une petite part de l'échantillon. Son intérêt est d'interprétation : il isole un effet de la couverture invisible dans les données agrégées. Les prédictions hors échantillon sont bien calibrées (`figures/calibration.png`).
 
