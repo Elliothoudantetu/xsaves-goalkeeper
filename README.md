@@ -12,7 +12,7 @@ This repository is an exploratory prototype built on StatsBomb open data. It fit
 - **Angle coverage only matters at close range.** On shots from within 8 yards, goalkeepers who made the save were hiding **60%** of the goal from the shooter, against **41%** when they conceded (Wilcoxon test, p < 10⁻⁵). Beyond 8 yards, there is no difference.
 - **The effect holds after adjustment.** In the logistic model, the coverage × close-range interaction is positive and significant (**β = 3.09, p = 0.005**), controlling for distance, angle, header, shot height, defenders in the shooting triangle, distance from the bisector and where the ball crossed the line. At close range, hiding 10 more percentage points of the goal multiplies the odds of a save by about **1.28**.
 
-This is consistent with goalkeeping coaching: in one-on-ones there is no time to dive, so what counts is how much of the goal the body already covers (closing the angle, "star" or block saves). From further out, reaction and shot-stopping dominate.
+This is consistent with goalkeeping coaching: in one-on-ones there is no time to dive, so what counts is how much of the goal the body already covers (closing the angle, "X-Block" or block saves). From further out, reaction and shot-stopping dominate.
 
 ![Angle coverage by shot distance](figures/coverage_by_distance.png)
 
@@ -83,7 +83,7 @@ Variable names and code comments are in French, with English translations in the
 
 ## Author
 
-**Elliot Houdant**, MSc in Health Data Science, Université de Lille. Former data and video analyst and youth coach at Amiens SC's academy.
+**Elliot Houdant**, MSc in Health Data Science, Université de Lille. Former data and video analyst at Amiens SC's academy.
 
 ## Data credit
 
