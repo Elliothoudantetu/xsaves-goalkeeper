@@ -49,15 +49,15 @@ Le modèle avec interaction n'améliore pas la discrimination globale, car les t
 
 ## Limites
 
-- **Pas de posture du corps.** Les freeze frames donnent la position au sol de chaque joueur, pas ses appuis, la position de ses bras ni s'il était posé.
-- **`ecart_arrivee` mélange deux choses :** la précision du tireur et le placement du gardien.
+- **Pas de posture du corps.** Les freeze frames donnent la position au sol de chaque joueur, pas ses appuis, la position de ses bras ni s'il a plongé.
+- **`ecart_arrivee` mélange de deux variables :** la précision du tireur et le placement du gardien.
 - **Le tireur s'adapte au gardien.** Il vise le côté que le gardien laisse ouvert : placement et point d'arrivée ne sont donc pas indépendants.
 - **Envergure fixe.** La couverture suppose la même envergure (±1,5 yard) pour tous les gardiens et à toutes les distances.
 - **Taille d'échantillon.** Uniquement des tournois ; le sous-groupe des tirs proches compte environ 220 tirs.
 
 ## Travail en cours et suite
 
-1. **Séparer le placement de l'arrêt.** Pour chaque tir, comparer la probabilité d'arrêt à la position réelle du gardien avec celle à la position « de manuel » (sur la bissectrice, même profondeur). Chaque tir tombe alors dans une de quatre situations : bien placé / mauvais plongeon, mal placé / superbe arrêt, bien placé / bon arrêt, mal placé / mauvais plongeon.
+1. **Séparer le placement de l'arrêt.** Pour chaque tir, comparer la probabilité d'arrêt à la position réelle du gardien avec celle à la position « Ideal » (sur la bissectrice, même profondeur). Chaque tir tombe alors dans une de quatre situations : bien placé / mauvais plongeon, mal placé / superbe arrêt, bien placé / bon arrêt, mal placé / mauvais plongeon.
 2. **Actions du gardien.** Ajouter les événements gardien de StatsBomb (plongeon ou debout, partie du corps utilisée, posé ou en mouvement au moment de la frappe).
 3. **Pose du corps et données de tracking.** Estimer la posture du gardien à partir de la vidéo ou du tracking pour modéliser directement ses appuis et son envergure.
 4. **Interaction tireur–gardien.** Modéliser le choix du tireur comme une réponse au placement du gardien, au lieu de considérer le point d'arrivée comme fixe.
@@ -81,7 +81,7 @@ R/03_model.R           # modèles en validation croisée, modèle final, calibra
 
 ## Auteur
 
-**Elliot Houdant**, Master Data Science en Santé, Université de Lille. Ancien analyste data et vidéo et éducateur au centre de formation de l'Amiens SC.
+**Elliot Houdant**, Master Data Science en Santé, Université de Lille. Ancien analyste data et vidéo au centre de formation de l'Amiens SC.
 
 ## Crédit des données
 
